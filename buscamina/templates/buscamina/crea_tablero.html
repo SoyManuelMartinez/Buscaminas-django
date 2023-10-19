@@ -10,17 +10,28 @@
 
     <h2>BUSCAMINAS</h2>
 
-<form method="post">
+<form method="POST">
   <label for="fila">Filas:</label><br>
-  <input type="number" id="fila" name="fila" value=1 min=1 max=20><br>
+  <input type="number" id="filas" name="filas" value=1 min=1 max=20><br>
   <label for="columna">Columnas:</label><br>
-  <input type="number" id="columna" name="fila" value=1 min=1 max=15><br><br>
+  <input type="number" id="columnas" name="filas" value=1 min=1 max=15><br><br>
   <input type="submit" value="Enviar">
 </form> 
 
 <p>Escribe los campos</p>
 
-
+{% if tabla %}
+<h2>Tabla Generada</h2>
+<table>
+    {% for row in tabla %}
+    <tr>
+        {% for cell in row %}
+        <td>{{ cell }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
 
 </body>
 </html>

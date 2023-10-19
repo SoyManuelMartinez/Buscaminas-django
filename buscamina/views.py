@@ -7,4 +7,7 @@ def index(request):
 def crea_tablero(request):
     return render(request, 'buscamina/crea_tablero.html', {})
 
+def drawTable(request):
+    return render(request, 'buscamina/draw_table.py')
+
 # Create your views here.
