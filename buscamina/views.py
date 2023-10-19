@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-def formulario(request):
-    return render(request, 'buscamina/formulario.html', {})
+def crea_tablero(request):
+    return render(request, 'buscamina/crea_tablero.html', {})
 
 # Create your views here.

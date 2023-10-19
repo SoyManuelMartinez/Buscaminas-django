@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.formulario, name='formulario'),
+    path('', views.crea_tablero, name='crea_tablero'),
 ]
