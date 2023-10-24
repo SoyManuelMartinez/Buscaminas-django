@@ -26,16 +26,34 @@
 
 <p>Escribe los campos</p>
 
+
 <table id="tablaGenerada">
-  <!-- Aquí se generará la tabla -->
+  <tbody>
+    {% for i in filas %}
+        <tr>
+            {% for j in columnas %}
+                <td>F {{i}} C {{j}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</tbody>
 </table>
 
 <script>
+
+
+
+// const urlParams = new URLSearchParams(window.location.search);
+//         const filas = urlParams.get("filas");
+//         const columnas = urlParams.get("columnas");
+
+
   document.getElementById('parametrosForm').addEventListener('submit', function(event) {
       event.preventDefault(); // Evitar que se recargue la página
       const filas = parseInt(document.getElementById('filas').value);
       const columnas = parseInt(document.getElementById('columnas').value);
       const tabla = document.getElementById('tablaGenerada');
+
 
       // Limpiar la tabla
       tabla.innerHTML = '';
@@ -51,18 +69,6 @@
   });
 </script>
 
-<!-- {% if tabla %}
-<h2>Tabla Generada</h2>
-<table>
-    {% for row in tabla %}
-    <tr>
-        {% for cell in row %}
-        <td>{{ cell }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
-{% endif %} -->
 
 </body>
 </html>
