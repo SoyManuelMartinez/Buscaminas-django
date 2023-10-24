@@ -4,23 +4,54 @@
   <meta charset="utf-8">
   <title>Formulario</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    </style>
 </head>
 
 <body>
 
     <h2>BUSCAMINAS</h2>
 
-<form method="POST">
+<form method="POST" id="parametrosForm">
   <label for="fila">Filas:</label><br>
   <input type="number" id="filas" name="filas" value=1 min=1 max=20><br>
   <label for="columna">Columnas:</label><br>
   <input type="number" id="columnas" name="filas" value=1 min=1 max=15><br><br>
   <input type="submit" value="Enviar">
+  {{ form.csrf_token }}
 </form> 
 
 <p>Escribe los campos</p>
 
-{% if tabla %}
+<table id="tablaGenerada">
+  <!-- Aquí se generará la tabla -->
+</table>
+
+<script>
+  document.getElementById('parametrosForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Evitar que se recargue la página
+      const filas = parseInt(document.getElementById('filas').value);
+      const columnas = parseInt(document.getElementById('columnas').value);
+      const tabla = document.getElementById('tablaGenerada');
+
+      // Limpiar la tabla
+      tabla.innerHTML = '';
+
+      // Crear las filas y columnas en la tabla
+      for (let i = 0; i < filas; i++) {
+          const fila = tabla.insertRow(i);
+          for (let j = 0; j < columnas; j++) {
+              const celda = fila.insertCell(j);
+              celda.innerHTML = `F ${i + 1}, C ${j + 1}`;
+          }
+      }
+  });
+</script>
+
+<!-- {% if tabla %}
 <h2>Tabla Generada</h2>
 <table>
     {% for row in tabla %}
@@ -31,7 +62,7 @@
     </tr>
     {% endfor %}
 </table>
-{% endif %}
+{% endif %} -->
 
 </body>
 </html>
